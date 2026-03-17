@@ -1,93 +1,59 @@
 <template>
-  <nav class="navbar">
-    <div class="navbar-container">
-      <div class="logo">
-        <!-- Using the logo image from Figma context -->
-        <img src="http://localhost:3845/assets/2377bb67c78ca52dec03ef5477de4727981b46b4.png" alt="Table Perks" />
+  <nav class="absolute top-0 left-0 w-full h-[80px] md:h-[122px] flex items-center z-[100] px-4 md:px-[64px]">
+    <div class="flex justify-between items-center w-full relative">
+      <!-- Logo (Left) -->
+      <div class="h-8 md:h-12 flex-shrink-0 z-[101]">
+        <img src="/images/logo1.svg" alt="Table Perks" class="h-full object-contain" />
       </div>
       
-      <div class="nav-links">
-        <a href="#company" class="nav-link">Company</a>
-        <a href="#features" class="nav-link">Features</a>
-        <a href="#pricing" class="nav-link">Pricing</a>
-        <a href="#resources" class="nav-link">Resources</a>
+      <!-- Desktop Navigation Links (Centered) -->
+      <div class="hidden md:flex absolute inset-0 items-center justify-center pointer-events-none">
+        <div class="flex gap-x-10 items-center pointer-events-auto">
+          <a href="#company" class="text-white font-medium text-base opacity-90 hover:opacity-100 transition-opacity">Company</a>
+          <a href="#features" class="text-white font-medium text-base opacity-90 hover:opacity-100 transition-opacity">Features</a>
+          <a href="#pricing" class="text-white font-medium text-base opacity-90 hover:opacity-100 transition-opacity">Pricing</a>
+          <a href="#resources" class="text-white font-medium text-base opacity-90 hover:opacity-100 transition-opacity">Resources</a>
+        </div>
+      </div>
+
+      <!-- Desktop Action Buttons (Right) -->
+      <div class="hidden md:flex items-center gap-3 z-[101]">
+        <a href="#login" class="bg-white text-[#02327e] text-[14px] px-6 py-2.5 rounded-full font-semibold">Log In</a>
+        <a href="#register" class="bg-transparent text-white border border-white text-[14px] px-6 py-2.5 rounded-full font-semibold">Register</a>
       </div>
       
-      <div class="nav-actions">
-        <a href="#login" class="btn btn-login">Log In</a>
-        <a href="#register" class="btn btn-register">Register</a>
+      <!-- Mobile Menu Toggle Button -->
+      <button class="flex md:hidden flex-col gap-1.5 bg-transparent border-none cursor-pointer z-[102]" @click="isMobileMenuOpen = !isMobileMenuOpen">
+        <span class="w-6 h-0.5 bg-white rounded-sm transition-all duration-300" :class="{ 'rotate-45 translate-y-2': isMobileMenuOpen }"></span>
+        <span class="w-6 h-0.5 bg-white rounded-sm transition-all duration-300" :class="{ 'opacity-0': isMobileMenuOpen }"></span>
+        <span class="w-6 h-0.5 bg-white rounded-sm transition-all duration-300" :class="{ '-rotate-45 -translate-y-2': isMobileMenuOpen }"></span>
+      </button>
+
+      <!-- Mobile Navigation Drawer -->
+      <div 
+        class="fixed top-0 left-0 w-full h-screen bg-[#0a4d9c] flex flex-col justify-center items-center gap-8 transition-transform duration-300 ease-in-out z-[100] md:hidden"
+        :class="isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'"
+      >
+        <a href="#company" class="text-white font-medium text-2xl opacity-90 hover:opacity-100 transition-opacity" @click="closeMobileMenu">Company</a>
+        <a href="#features" class="text-white font-medium text-2xl opacity-90 hover:opacity-100 transition-opacity" @click="closeMobileMenu">Features</a>
+        <a href="#pricing" class="text-white font-medium text-2xl opacity-90 hover:opacity-100 transition-opacity" @click="closeMobileMenu">Pricing</a>
+        <a href="#resources" class="text-white font-medium text-2xl opacity-90 hover:opacity-100 transition-opacity" @click="closeMobileMenu">Resources</a>
+        
+        <div class="flex flex-col items-center gap-4 mt-4">
+          <a href="#login" class="bg-white text-[#02327e] text-[18px] px-10 py-3 rounded-full font-semibold" @click="closeMobileMenu">Log In</a>
+          <a href="#register" class="bg-transparent text-white border border-white text-[18px] px-10 py-3 rounded-full font-semibold" @click="closeMobileMenu">Register</a>
+        </div>
       </div>
     </div>
   </nav>
 </template>
 
-<style scoped>
-.navbar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 122px;
-  display: flex;
-  align-items: center;
-  z-index: 100;
-  padding: 0 var(--space-64);
-}
+<script setup lang="ts">
+import { ref } from 'vue'
 
-.navbar-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
+const isMobileMenuOpen = ref(false)
 
-.logo img {
-  height: 48px;
-  object-fit: contain;
+const closeMobileMenu = () => {
+  isMobileMenuOpen.value = false
 }
-
-.nav-links {
-  display: flex;
-  gap: 40px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  padding: 8px 32px;
-  border-radius: 100px;
-}
-
-.nav-link {
-  color: white;
-  font-weight: 500;
-  font-size: 16px;
-  opacity: 0.9;
-  transition: opacity 0.2s;
-}
-
-.nav-link:hover {
-  opacity: 1;
-}
-
-.nav-actions {
-  display: flex;
-  gap: 12px;
-}
-
-.btn-login {
-  background: white;
-  color: #02327e;
-  font-size: 14px;
-  padding: 10px 24px;
-}
-
-.btn-register {
-  background: transparent;
-  color: white;
-  border: 1px solid white;
-  font-size: 14px;
-  padding: 10px 24px;
-}
-
-.btn-register:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-</style>
+</script>

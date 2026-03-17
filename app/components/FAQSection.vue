@@ -1,26 +1,28 @@
 <template>
-  <section class="faq-section section-padding" id="faqs">
-    <div class="container">
-      <div class="section-header text-center">
-        <h2 class="section-title">Frequently Asked Questions</h2>
-        <p class="section-description">Have another question? Please contact our team!</p>
+  <section class="py-10 md:py-20 bg-white" id="faqs">
+    <div class="container mx-auto px-4 md:px-16">
+      <div class="mb-10 md:mb-16 text-center">
+        <h2 class="text-[32px] md:text-[48px] font-semibold text-[#0c130f] leading-tight mb-4 text-center">Frequently Asked Questions</h2>
+        <p class="text-base md:text-[18px] text-[#5c615e]">Have another question? Please contact our team!</p>
       </div>
 
-      <div class="faq-list reveal">
+      <div class="max-w-[880px] mx-auto flex flex-col gap-6 reveal">
         <div 
           v-for="(faq, index) in faqs" 
           :key="index" 
-          class="faq-item"
-          :class="{ active: openIndex === index }"
+          class="border border-[#908f92]/24 rounded-[24px] overflow-hidden transition-all duration-300"
+          :class="openIndex === index ? 'bg-[#fafafa] border-[#8f9192]/25 shadow-[0_0_0_0.5px_rgba(143,145,146,0.15)]' : 'bg-white'"
         >
-          <div class="faq-header" @click="toggleFAQ(index)">
-            <h3>{{ faq.question }}</h3>
-            <div class="faq-icon">
-              <span v-if="openIndex === index">▲</span>
-              <span v-else>▼</span>
+          <div class="p-6 md:p-6 flex justify-between items-center cursor-pointer" @click="toggleFAQ(index)">
+            <h3 class="text-base md:text-[24px] font-semibold text-[#0c130f] tracking-[-0.288px]">{{ faq.question }}</h3>
+            <div class="text-[#5c615e] transition-transform duration-300" :class="{ 'rotate-180': openIndex === index }">
+              ▼
             </div>
           </div>
-          <div v-show="openIndex === index" class="faq-content">
+          <div 
+            v-show="openIndex === index" 
+            class="px-6 pb-6 text-sm md:text-[18px] text-[#5c615e] leading-relaxed transition-all"
+          >
             <p>{{ faq.answer }}</p>
           </div>
         </div>
@@ -60,57 +62,3 @@ const faqs = [
   }
 ]
 </script>
-
-<style scoped>
-.faq-section {
-  padding: 80px 0;
-  background: white;
-}
-
-.faq-list {
-  max-width: 880px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.faq-item {
-  background: white;
-  border: 1px solid rgba(144, 143, 146, 0.24);
-  border-radius: 24px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.faq-item.active {
-  background: #fafafa;
-  border-color: rgba(143, 145, 146, 0.25);
-  box-shadow: 0 0 0 0.5px rgba(143, 145, 146, 0.15);
-}
-
-.faq-header {
-  padding: 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-}
-
-.faq-header h3 {
-  font-size: 24px;
-  color: var(--color-neutral-500);
-  letter-spacing: -0.288px;
-}
-
-.faq-icon {
-  color: var(--color-neutral-300);
-}
-
-.faq-content {
-  padding: 0 24px 24px;
-  color: var(--color-neutral-300);
-  font-size: 18px;
-  line-height: 1.6;
-}
-</style>

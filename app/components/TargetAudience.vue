@@ -1,21 +1,25 @@
 <template>
-  <section class="target-audience section-padding">
-    <div class="container">
-      <div class="section-header text-center">
-        <h2 class="section-title">Who Table Perks is for</h2>
-        <p class="section-description">
+  <section class="py-10 md:py-20 bg-white" id="target-audience">
+    <div class="container mx-auto px-4 md:px-16">
+      <div class="mb-10 md:mb-16 text-center">
+        <h2 class="text-[32px] md:text-[48px] font-semibold text-[#0c130f] leading-tight mb-4 text-center">Who Table Perks is for</h2>
+        <p class="text-base md:text-[18px] text-[#5c615e]">
           Our platform is designed to serve every stakeholder in the loyalty ecosystem.
         </p>
       </div>
 
-      <div class="audience-grid">
-        <div v-for="(item, index) in audience" :key="index" class="audience-card">
-          <div class="image-box">
-            <img :src="item.image" :alt="item.title" />
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-5">
+        <div 
+          v-for="(item, index) in audience" 
+          :key="index" 
+          class="flex flex-col md:pr-6 md:border-r border-[#3d4142]/10 last:border-none pb-8 md:pb-0 border-b md:border-b-0 last:border-b-0"
+        >
+          <div class="w-full h-[134px] rounded-[12px] overflow-hidden mb-6 border border-[#8f9292]/24">
+            <img :src="item.image" :alt="item.title" class="w-full h-full object-cover" />
           </div>
-          <div class="audience-content">
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.description }}</p>
+          <div>
+            <h3 class="text-xl md:text-[24px] font-semibold mb-3 text-[#0c130f] text-center">{{ item.title }}</h3>
+            <p class="text-sm md:text-[16px] text-[#5c615e] leading-relaxed">{{ item.description }}</p>
           </div>
         </div>
       </div>
@@ -28,70 +32,22 @@ const audience = [
   {
     title: 'Owners',
     description: 'Consolidated dashboard across locations, program strategy controls, and high‑level analytics',
-    image: 'http://localhost:3845/assets/4a1c3e7fa863068238b49b958138511be0ff9006.png'
+    image: '/images/towho/owner.png'
   },
   {
     title: 'Managers',
     description: 'Branch performance insights, staffing tools, local campaigns, and inventory‑aligned promos',
-    image: 'http://localhost:3845/assets/ee7d49d032811e0697329cb8d37716725f42101e.png'
+    image: '/images/towho/manager.png'
   },
   {
     title: 'Staff',
     description: 'Simple stamp/point issuance and redemption checks that work on any device',
-    image: 'http://localhost:3845/assets/21fd22ff9cc9cffdcef478cbe46f6e3b7a0dde07.png'
+    image: '/images/towho/staff.png'
   },
   {
     title: 'Customers',
     description: 'Clear progress, reward eligibility, menu browsing, and profile management in a branded app',
-    image: 'http://localhost:3845/assets/abbd480368a012dd08c1cfac1a2e8699609be3cf.png'
+    image: '/images/towho/customers.png'
   }
 ]
 </script>
-
-<style scoped>
-.target-audience {
-  padding: 80px 0;
-  background: white;
-}
-
-.audience-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
-.audience-card {
-  padding-right: 24px;
-  border-right: 1px solid rgba(61, 65, 66, 0.1);
-}
-
-.audience-card:last-child {
-  border-right: none;
-}
-
-.image-box {
-  width: 100%;
-  height: 134px;
-  border-radius: 12px;
-  overflow: hidden;
-  margin-bottom: 24px;
-  border: 1px solid rgba(143, 146, 146, 0.24);
-}
-
-.image-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.audience-content h3 {
-  font-size: 24px;
-  margin-bottom: 12px;
-  color: var(--color-neutral-500);
-}
-
-.audience-content p {
-  font-size: 16px;
-  color: var(--color-neutral-300);
-}
-</style>

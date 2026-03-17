@@ -1,20 +1,20 @@
 <template>
-  <section class="features-grid section-padding" id="features">
-    <div class="container">
-      <div class="section-header text-center">
-        <p class="eyebrow">Feature Highlights</p>
-        <h2 class="section-title">Why We’re the Trusted<br />Choice for Your Success</h2>
-        <p class="section-description">Excellence, tailored solutions, and expert guidance for your financial goals</p>
+  <section class="py-10 md:py-20 bg-white" id="features">
+    <div class="container mx-auto px-4 md:px-16">
+      <div class="mb-10 md:mb-16 text-center">
+        <p class="text-[14px] font-semibold tracking-[2.1px] uppercase text-[#0057e2] mb-4">Feature Highlights</p>
+        <h2 class="text-[32px] md:text-[48px] font-semibold leading-tight mb-4 md:mb-6 text-[#0c130f]">Why We’re the Trusted<br />Choice for Your Success</h2>
+        <p class="text-base md:text-[18px] text-[#5c615e]">Excellence, tailored solutions, and expert guidance for your financial goals</p>
       </div>
 
-      <div class="grid">
-        <div v-for="(feature, index) in features" :key="index" class="feature-card reveal" :style="{ transitionDelay: `${index * 0.1}s` }">
-          <div class="icon-container">
-            <img :src="feature.icon" :alt="feature.title" />
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div v-for="(feature, index) in features" :key="index" class="flex flex-col gap-6 overflow-hidden reveal" :style="{ transitionDelay: `${index * 0.1}s` }">
+          <div class="w-16 h-16 bg-[#0057e2] rounded-full flex items-center justify-center border border-[#8f9292]/25">
+            <img :src="feature.icon" :alt="feature.title" class="w-8 h-8" />
           </div>
-          <div class="feature-content">
-            <h3>{{ feature.title }}</h3>
-            <p>{{ feature.description }}</p>
+          <div>
+            <h3 class="text-lg md:text-[20px] font-semibold mb-4 text-[#0c130f]">{{ feature.title }}</h3>
+            <p class="text-sm md:text-[14px] text-[#5c615e] leading-relaxed">{{ feature.description }}</p>
           </div>
         </div>
       </div>
@@ -27,83 +27,32 @@ const features = [
   {
     title: 'Loyalty Programs',
     description: 'Configure points or stamps; define tiers; set eligibility and expiry; automate redemption logic',
-    icon: 'http://localhost:3845/assets/10f804bf02a98f2b44f6ce511b03667e6de7756e.svg'
+    icon: '/images/highlights/loyalty.svg'
   },
   {
     title: 'QR Scanning & Redemption',
     description: 'Fast in‑store validation with scannable codes for staff and customers',
-    icon: 'http://localhost:3845/assets/544b15a24e1165be3a428558ac040ded5c5d143c.svg'
+    icon: '/images/highlights/qr.svg'
   },
   {
     title: 'Customer Management',
     description: 'Centralized profiles, preferences, segments, and complete transaction history',
-    icon: 'http://localhost:3845/assets/6f0fd12c65a6f2b9c6b8130f5da3f6815d54c066.svg'
+    icon: '/images/highlights/customer.svg'
   },
   {
     title: 'Menu Management',
     description: 'Manage categories, items, pricing, availability, and featured promotions',
-    icon: 'http://localhost:3845/assets/86d9160cf33cfc6737329acccedd5c9cbd9d62bf.svg'
+    icon: '/images/highlights/menu.svg'
   },
   {
     title: 'Analytics & Reporting',
     description: 'Visits, redemptions, active customers, cohort trends, and top‑performing rewards/items',
-    icon: 'http://localhost:3845/assets/72d0b315e22a832355266323a0936e5619ea1779.svg'
+    icon: '/images/highlights/analytics.svg'
   },
   {
     title: 'Role‑Based Access',
     description: 'Super Admin, Merchant, Staff, and Customer flows with fine‑grained permissions',
-    icon: 'http://localhost:3845/assets/4cd6226c19da807db2343e206e13ddf99b4b8c6f.svg'
+    icon: '/images/highlights/role.svg'
   }
 ]
 </script>
-
-<style scoped>
-.features-grid {
-  padding: 80px 0;
-  background: white;
-}
-
-.section-header {
-  margin-bottom: 64px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-}
-
-.feature-card {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  overflow: hidden;
-}
-
-.icon-container {
-  width: 64px;
-  height: 64px;
-  background: var(--color-primary);
-  border-radius: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(143, 146, 146, 0.24);
-}
-
-.icon-container img {
-  width: 32px;
-  height: 32px;
-}
-
-.feature-content h3 {
-  font-size: 20px;
-  margin-bottom: 16px;
-  color: var(--color-neutral-500);
-}
-
-.feature-content p {
-  font-size: 14px;
-  color: var(--color-neutral-300);
-}
-</style>

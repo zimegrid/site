@@ -1,183 +1,64 @@
 <template>
-  <section class="hero">
-    <div class="hero-bg">
-      <img src="http://localhost:3845/assets/779fc4bf749524c188be8487f4e43567207923ea.svg" alt="" class="gradient-bg" />
+  <section class="bg-[#0057e2] min-h-[auto] md:min-h-[900px] relative overflow-hidden rounded-b-[24px] pt-[100px] md:pt-[162px] pb-[40px] md:pb-0 text-white">
+    <div class="absolute top-[50px] md:top-[136px] left-1/2 -translate-x-1/2 w-[200%] md:w-[1604px] h-full md:h-[976px] z-0 pointer-events-none">
+      <!-- <img src="/images/hero_bg_1773559422433.png" alt="" class="w-full h-full object-contain" /> -->
     </div>
 
-    <div class="hero-content reveal">
-      <div class="reviews">
-        <div class="avatars">
-          <img src="http://localhost:3845/assets/f9e963121d9548c53b94482392901117bd5f52b0.png" alt="" />
-          <img src="http://localhost:3845/assets/e7eb30de9d08b8fec0c871d6e1691ca96a6bebc8.png" alt="" />
-          <img src="http://localhost:3845/assets/541878896a24ced2056ba78096dc2e973a06416d.png" alt="" />
-          <img src="http://localhost:3845/assets/7788a682c0c8070e6f637be692491efff0cc5b44.png" alt="" />
+    <div class="container relative z-10 flex flex-col items-center text-center reveal mx-auto px-4 md:px-16">
+      <div class="flex flex-col md:flex-row items-center gap-3 mb-8 md:mb-6">
+        <div class="flex">
+          <img src="/images/avatar_1_1773559448571.png" alt="" class="w-8 h-8 rounded-full border border-white" />
+          <img src="/images/avatar_2_1773559480132.png" alt="" class="w-8 h-8 rounded-full border border-white -ml-2" />
+          <img src="/images/avatar_3_1773559499745.png" alt="" class="w-8 h-8 rounded-full border border-white -ml-2" />
+          <img src="/images/avatar_4_1773559565253.png" alt="" class="w-8 h-8 rounded-full border border-white -ml-2" />
         </div>
-        <div class="stars">
-          <div class="stars-icons">
+        <div class="flex flex-col items-start text-sm">
+          <div class="flex gap-[2px] mb-1">
              <span v-for="i in 5" :key="i">⭐</span>
           </div>
-          <p>Over <strong>100+ people</strong> joined</p>
+          <p class="text-[#e8f6f2]">Over <strong class="font-semibold">100+ people</strong> joined</p>
         </div>
       </div>
 
-      <h1 class="hero-title">
+      <h1 class="text-[36px] md:text-[64px] font-semibold leading-tight mb-4 md:mb-6 text-white text-center">
         Turn Every Visit & Customers Into<br />
         Everlasting Loyalty
       </h1>
 
-      <p class="hero-description">
+      <p class="text-sm md:text-lg text-[#e8f6f2] max-w-[800px] mb-8 md:mb-12">
         A complete, white‑label loyalty platform that helps restaurants drive repeat business, manage rewards across branches, and understand customer behavior in real time
       </p>
 
-      <div class="hero-btns">
-        <a href="#pricing" class="btn btn-white btn-lg">See Pricing</a>
-        <a href="#contact" class="btn btn-outline btn-lg">Contact Us</a>
+      <div class="flex flex-col md:flex-row w-full md:w-auto gap-4 md:gap-6 mb-12 md:mb-20 justify-center">
+        <a href="#pricing" class="bg-white text-[#0c130f] hover:bg-gray-50 px-8 py-4 text-sm rounded-full font-semibold transition-all w-full md:w-auto inline-block">See Pricing</a>
+        <a href="#contact" class="border border-white text-white hover:bg-white/10 px-8 py-4 text-sm rounded-full font-semibold transition-all w-full md:w-auto inline-block">Contact Us</a>
       </div>
 
-      <div class="dashboard-preview reveal">
-        <img src="http://localhost:3845/assets/411e7789967cbdfa8476cba00b8a7de29749e34c.png" alt="Dashboard" class="main-dashboard" />
-        <img src="http://localhost:3845/assets/3efc355d3c682aab5959fd06cf5a3ec03d6743ec.png" alt="" class="floating-card card-left" />
-        <img src="http://localhost:3845/assets/3efc355d3c682aab5959fd06cf5a3ec03d6743ec.png" alt="" class="floating-card card-right" />
+      <div class="relative w-full md:w-[800px] mt-5 mx-auto">
+        <div class="banner-container">
+          <img src="/images/mainbanner.png" alt="Dashboard" class="banner-image" />
+        </div>
+        <img src="/images/bannerfloat1.png" alt="" class="hidden md:block absolute w-[110px] rounded-[5px] shadow-[0_10px_20px_rgba(0,0,0,0.1)] -left-[85px] top-[24px]" />
+        <img src="/images/bannerfloat1.png" alt="" class="hidden md:block absolute w-[110px] rounded-[5px] shadow-[0_10px_20px_rgba(0,0,0,0.1)] -right-[85px] top-[50px]" />
       </div>
     </div>
   </section>
 </template>
 
+
 <style scoped>
-.hero {
-  background-color: var(--color-primary);
-  min-height: 900px;
+
+.banner-container {
   position: relative;
-  overflow: hidden;
-  border-radius: 0 0 var(--radius-24) var(--radius-24);
-  padding-top: 162px;
-  color: white;
 }
 
-.hero-bg {
+.banner-image {
   position: absolute;
-  top: 136px;
+  bottom: -406px;
+  right: -15px;
   left: 50%;
-  transform: translateX(-50%);
-  width: 1604px;
-  height: 976px;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.gradient-bg {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 1280px;
-  margin: 0 auto;
-}
-
-.reviews {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 24px;
-}
-
-.avatars {
-  display: flex;
-}
-
-.avatars img {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 1px solid white;
-  margin-left: -8px;
-}
-
-.avatars img:first-child {
-  margin-left: 0;
-}
-
-.stars {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  font-size: 14px;
-}
-
-.stars-icons {
-  display: flex;
-  gap: 2px;
-  margin-bottom: 4px;
-}
-
-.stars p {
-  color: #e8f6f2;
-}
-
-.hero-title {
-  font-size: 64px;
-  font-weight: 600;
-  line-height: 1.2;
-  margin-bottom: 24px;
-}
-
-.hero-description {
-  font-size: 18px;
-  color: #e8f6f2;
-  max-width: 800px;
-  margin-bottom: 48px;
-}
-
-.hero-btns {
-  display: flex;
-  gap: 24px;
-  margin-bottom: 80px;
-}
-
-.btn-lg {
-  padding: 16px 32px;
-  font-size: 14px;
-}
-
-.btn-outline {
-  border: 1px solid white;
-  color: white;
-}
-
-.dashboard-preview {
-  position: relative;
   width: 800px;
-  margin-top: 20px;
-}
-
-.main-dashboard {
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-}
-
-.floating-card {
-  position: absolute;
-  width: 110px;
-  border-radius: 5px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-.card-left {
-  left: -85px;
-  top: 24px;
-}
-
-.card-right {
-  right: -85px;
-  top: 50px;
+  transform: translateX(-50%);
+  border-radius: 12px;
 }
 </style>

@@ -1,10 +1,7 @@
 <template>
   <section class="final-cta section-padding">
     <div class="container">
-      <div class="cta-card reveal">
-        <div class="pattern-bg">
-          <img src="http://localhost:3845/assets/006a1d705712fbdb27ba8ad5f54ef61861340972.svg" alt="" />
-        </div>
+      <div class="cta-card reveal bg-[url('/images/cross.png')] bg-cover bg-center">
         <div class="cta-content">
           <h2 class="cta-title">Ready to Build Loyalty That Lasts?</h2>
           <p class="cta-description">See how the platform fits your branches, menu, and customers</p>
