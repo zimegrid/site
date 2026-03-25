@@ -45,7 +45,7 @@
         </div>
       </div>
 
-      <div class="order-first lg:order-last reveal-right h-[300px] md:h-[700px] relative">
+      <div class="order-first lg:order-last reveal-left h-[300px] md:h-[700px] relative">
         <Transition
           mode="out-in"
           enter-active-class="transition-all duration-500 ease-out"

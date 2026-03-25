@@ -31,8 +31,8 @@
 
       <!-- Mobile Navigation Drawer -->
       <div 
-        class="fixed top-0 left-0 w-full h-screen bg-[#0a4d9c] flex flex-col justify-center items-center gap-8 transition-transform duration-300 ease-in-out z-[100] lg:hidden"
-        :class="isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'"
+        class="fixed top-0 left-0 h-screen bg-[#0a4d9c] flex flex-col justify-center items-center gap-8 transition-transform duration-300 ease-in-out z-[100] lg:hidden"
+        :class="isMobileMenuOpen ? 'translate-x-0 w-full opacity-100' : 'translate-x-full w-0 opacity-0'"
       >
         <!-- <a href="#company" class="text-white font-medium text-2xl opacity-90 hover:opacity-100 transition-opacity" @click="closeMobileMenu">Company</a> -->
         <a href="#features" class="text-white font-medium text-2xl opacity-90 hover:opacity-100 transition-opacity" @click="closeMobileMenu">Features</a>
