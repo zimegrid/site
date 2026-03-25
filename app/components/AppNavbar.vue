@@ -18,7 +18,7 @@
 
       <!-- Desktop Action Buttons (Right) -->
       <div class="hidden lg:flex items-center gap-3 z-[101]">
-        <a href="https://console.tableperks.com/login" class="bg-white text-[#02327e] text-[14px] px-6 py-2.5 rounded-full font-semibold">Log In</a>
+        <a target="_blank" href="https://console.tableperks.com/login" class="bg-white text-[#02327e] text-[14px] px-6 py-2.5 rounded-full font-semibold">Log In</a>
         <!-- <a href="#register" class="bg-transparent text-white border border-white text-[14px] px-6 py-2.5 rounded-full font-semibold">Register</a> -->
       </div>
       
@@ -40,7 +40,7 @@
         <a href="#resources" class="text-white font-medium text-2xl opacity-90 hover:opacity-100 transition-opacity" @click="closeMobileMenu">Resources</a>
         
         <div class="flex flex-col items-center gap-4 mt-4">
-          <a href="https://console.tableperks.com/login" class="bg-white text-[#02327e] text-[18px] px-10 py-3 rounded-full font-semibold" @click="closeMobileMenu">Log In</a>
+          <a target="_blank" href="https://console.tableperks.com/login" class="bg-white text-[#02327e] text-[18px] px-10 py-3 rounded-full font-semibold" @click="closeMobileMenu">Log In</a>
           <!-- <a href="#register" class="bg-transparent text-white border border-white text-[18px] px-10 py-3 rounded-full font-semibold" @click="closeMobileMenu">Register</a> -->
         </div>
       </div>

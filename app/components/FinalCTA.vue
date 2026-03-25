@@ -1,70 +1,22 @@
 <template>
-  <section class="final-cta section-padding">
-    <div class="container">
-      <div class="cta-card reveal bg-[url('/images/cross.png')] bg-cover bg-center">
-        <div class="cta-content">
-          <h2 class="cta-title">Ready to Build Loyalty That Lasts?</h2>
-          <p class="cta-description">See how the platform fits your branches, menu, and customers</p>
-          <a href="#pricing" class="btn btn-white btn-lg">See Pricing</a>
+  <section class="py-10 md:py-20">
+    <div class="container mx-auto px-4 md:px-16">
+      <div class="relative overflow-hidden rounded-[24px] h-[360px] md:h-[390px] bg-[#0057e2] bg-[url('/images/cross.png')] bg-cover bg-center flex items-center justify-center text-center reveal">
+        <div class="relative z-[2] text-white max-w-[1120px] px-6">
+          <h2 class="text-[32px] md:text-[48px] font-semibold mb-6 bg-gradient-to-b from-white to-white/50 bg-clip-text text-transparent tracking-[-0.96px] leading-[1.2]">
+            Ready to Build Loyalty That Lasts?
+          </h2>
+          <p class="text-base md:text-[18px] text-[#edf7fd] mb-12">
+            See how the platform fits your branches, menu, and customers
+          </p>
+          <a
+            href="#pricing"
+            class="inline-flex items-center justify-center bg-white text-[#0c130f] border border-black/10 hover:bg-gray-50 px-8 py-4 rounded-full font-semibold transition-all"
+          >
+            See Pricing
+          </a>
         </div>
       </div>
     </div>
   </section>
 </template>
-
-<style scoped>
-.final-cta {
-  padding: 80px 0;
-}
-
-.cta-card {
-  background-color: var(--color-primary);
-  border-radius: 24px;
-  height: 390px;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.pattern-bg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 1280px;
-  height: 397px;
-  opacity: 0.1;
-  pointer-events: none;
-}
-
-.pattern-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.cta-content {
-  position: relative;
-  z-index: 2;
-  color: white;
-  max-width: 1120px;
-}
-
-.cta-title {
-  font-size: 48px;
-  margin-bottom: 24px;
-  background: linear-gradient(180deg, #FFFFFF 31.36%, rgba(255, 255, 255, 0.5) 183.4%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  letter-spacing: -0.96px;
-}
-
-.cta-description {
-  font-size: 18px;
-  color: #edf7fd;
-  margin-bottom: 48px;
-}
-</style>
