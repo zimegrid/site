@@ -31,6 +31,7 @@ onMounted(() => {
       <FinalCTA />
     </main>
     <AppFooter />
+    <ContactDialog  />
   </div>
 </template>
 

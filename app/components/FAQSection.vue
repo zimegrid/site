@@ -1,5 +1,5 @@
 <template>
-  <section class="py-10 md:py-20 bg-white" id="faqs">
+  <section class="py-10 md:py-20 bg-white" id="resources">
     <div class="container mx-auto px-4 md:px-16">
       <div class="mb-10 md:mb-16 text-center">
         <h2 class="text-[32px] md:text-[48px] font-semibold text-[#0c130f] leading-tight mb-4 text-center">Frequently Asked Questions</h2>

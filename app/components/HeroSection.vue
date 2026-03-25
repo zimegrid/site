@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-[#0057e2] min-h-[auto] md:min-h-[900px] relative overflow-hidden rounded-b-[24px] pt-[100px] md:pt-[162px] pb-[40px] md:pb-0 text-white">
+  <section class="bg-[#0057e2] min-h-[auto] md:min-h-[900px] relative overflow-hidden rounded-b-[24px] pt-[100px] md:pt-[162px] pb-[40px] md:pb-0 text-white" id="company">
     <div class="absolute top-[50px] md:top-[136px] left-1/2 -translate-x-1/2 w-[200%] md:w-[1604px] h-full md:h-[976px] z-0 pointer-events-none">
       <!-- <img src="/images/hero_bg_1773559422433.png" alt="" class="w-full h-full object-contain" /> -->
     </div>
@@ -31,7 +31,7 @@
 
       <div class="flex flex-col md:flex-row w-full md:w-auto gap-4 md:gap-6 mb-12 md:mb-20 justify-center">
         <a href="#pricing" class="bg-white text-[#0c130f] hover:bg-gray-50 px-8 py-4 text-sm rounded-full font-semibold transition-all w-full md:w-auto inline-block">See Pricing</a>
-        <a href="#contact" class="border border-white text-white hover:bg-white/10 px-8 py-4 text-sm rounded-full font-semibold transition-all w-full md:w-auto inline-block">Contact Us</a>
+        <a href="#" class="border border-white text-white hover:bg-white/10 px-8 py-4 text-sm rounded-full font-semibold transition-all w-full md:w-auto inline-block" @click.prevent="openContact">Contact Us</a>
       </div>
 
       <div class="relative w-[90%] max-w-[800px] mt-5 m x-auto">
@@ -46,6 +46,13 @@
   </section>
 </template>
 
+<script setup lang="ts">
+const isContactOpen = useState<boolean>('contactOpen', () => false)
+
+const openContact = () => {
+  isContactOpen.value = true
+}
+</script>
 
 <style scoped>
 .banner-container {

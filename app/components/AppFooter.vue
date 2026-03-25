@@ -14,14 +14,14 @@
         <div class="flex flex-wrap gap-10 md:gap-20">
           <div class="flex flex-col min-w-[120px]">
             <h4 class="text-base font-semibold text-[#0c130f] mb-3">Product</h4>
-            <a href="#" class="text-[#5c615e] text-base mb-3 hover:text-[#0057e2] transition-colors">Features</a>
-            <a href="#" class="text-[#5c615e] text-base mb-3 hover:text-[#0057e2] transition-colors">How to start</a>
-            <a href="#" class="text-[#5c615e] text-base mb-3 hover:text-[#0057e2] transition-colors">Who Table Perks is for</a>
+            <a href="#features" class="text-[#5c615e] text-base mb-3 hover:text-[#0057e2] transition-colors">Features</a>
+            <a href="#how-to-start" class="text-[#5c615e] text-base mb-3 hover:text-[#0057e2] transition-colors">How to start</a>
+            <a href="#target-audience" class="text-[#5c615e] text-base mb-3 hover:text-[#0057e2] transition-colors">Who Table Perks is for</a>
           </div>
           <div class="flex flex-col min-w-[120px]">
             <h4 class="text-base font-semibold text-[#0c130f] mb-3">Help</h4>
-            <a href="#" class="text-[#5c615e] text-base mb-3 hover:text-[#0057e2] transition-colors">FAQs</a>
-            <a href="#" class="text-[#5c615e] text-base mb-3 hover:text-[#0057e2] transition-colors">Contact us</a>
+            <a href="#resources" class="text-[#5c615e] text-base mb-3 hover:text-[#0057e2] transition-colors">FAQs</a>
+            <a href="#" class="text-[#5c615e] text-base mb-3 hover:text-[#0057e2] transition-colors" @click.prevent="openContact">Contact us</a>
           </div>
           <div class="flex flex-col min-w-[120px]">
             <h4 class="text-base font-semibold text-[#0c130f] mb-3">Legal</h4>
@@ -56,5 +56,9 @@
 </template>
 
 <script setup lang="ts">
-// Footer logic if needed
+const isContactOpen = useState<boolean>('contactOpen', () => false)
+
+const openContact = () => {
+  isContactOpen.value = true
+}
 </script>
