@@ -12,7 +12,7 @@
           <img src="/images/avatar_3_1773559499745.png" alt="" class="w-8 h-8 rounded-full border border-white -ml-2" />
           <img src="/images/avatar_4_1773559565253.png" alt="" class="w-8 h-8 rounded-full border border-white -ml-2" />
         </div>
-        <div class="flex flex-col items-start text-sm">
+        <div class="flex flex-col items-center lg:items-start text-sm">
           <div class="flex gap-[2px] mb-1">
              <span v-for="i in 5" :key="i">⭐</span>
           </div>
