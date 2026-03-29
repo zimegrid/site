@@ -219,7 +219,7 @@ const submit = async () => {
   errorMessage.value = ''
 
   try {
-    const response = await fetch('/api/contact', {
+    const response = await fetch('https://api.tableperks.com/api/auth/contact', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({
