@@ -10,15 +10,15 @@
     >
       <div v-if="open" class="fixed inset-0 z-[1000]">
         <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" @click="close"></div>
-        <div class="relative flex min-h-full items-end sm:items-center justify-center p-4">
+        <div class="relative flex min-h-full w-full items-stretch sm:items-center justify-center overflow-y-auto p-0 sm:p-4">
           <div
-            class="w-full max-w-[560px] rounded-[24px] bg-white shadow-2xl border border-black/10 overflow-hidden"
+            class="flex w-full flex-col bg-white shadow-2xl border border-black/10 overflow-hidden h-[100dvh] rounded-none sm:h-auto sm:max-h-[calc(100dvh-2rem)] sm:max-w-[560px] sm:rounded-[24px]"
             role="dialog"
             aria-modal="true"
             aria-labelledby="contact-dialog-title"
             @click.stop
           >
-            <div class="flex items-center justify-between px-6 py-5 border-b border-black/10">
+            <div class="flex items-center justify-between px-4 py-4 sm:px-6 sm:py-5 border-b border-black/10">
               <div>
                 <h3 id="contact-dialog-title" class="text-[#0c130f] font-semibold text-xl">Contact Us</h3>
                 <p class="text-[#5c615e] text-sm mt-1">Send us a message and we’ll get back soon.</p>
@@ -33,7 +33,7 @@
               </button>
             </div>
 
-            <div class="px-6 py-6">
+            <div class="flex-1 overflow-y-auto overscroll-contain px-4 py-4 sm:px-6 sm:py-6">
               <div v-if="status === 'success'" class="rounded-[16px] border border-[#8f9292]/24 bg-[#fafafa] p-5">
                 <h4 class="text-[#0c130f] font-semibold text-lg mb-2">Message received</h4>
                 <p class="text-[#5c615e] text-sm">Thanks! We’ll reach out to you at {{ email }}.</p>
