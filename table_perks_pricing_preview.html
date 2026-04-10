@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Table Perks Pricing Preview</title>
+  <style>
+    * { box-sizing: border-box; }
+    :root {
+      --bg: #1f5eff;
+      --bg-dark: #184bd0;
+      --text: #ffffff;
+      --muted: rgba(255,255,255,0.78);
+      --card-bg: rgba(255,255,255,0.97);
+      --card-text: #1f2a44;
+      --line: #e7ebf5;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px),
+        radial-gradient(circle at center, #3f78ff 0%, var(--bg) 48%, var(--bg-dark) 100%);
+      background-size: 72px 72px, 72px 72px, cover;
+      min-height: 100vh;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 36px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(6px);
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+    }
+
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #8fd8ff, #f6b62a);
+      display: inline-block;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+    }
+
+    .brand span:last-child { color: #f6b62a; }
+
+    .launch-pill {
+      padding: 10px 18px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.08);
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 0.6px;
+    }
+
+    .hero {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 68px 20px 80px;
+    }
+
+    .eyebrow {
+      width: fit-content;
+      margin: 0 auto 18px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.92);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      margin: 0 auto 18px;
+      max-width: 980px;
+      text-align: center;
+      font-size: clamp(46px, 7vw, 84px);
+      line-height: 0.96;
+      font-weight: 800;
+      letter-spacing: -2px;
+    }
+
+    .hero h1 .soft { color: #a9ceff; }
+
+    .hero p {
+      max-width: 820px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 22px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    .pricing-wrap {
+      max-width: 1280px;
+      margin: 56px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+      align-items: start;
+    }
+
+    .card {
+      position: relative;
+      background: var(--card-bg);
+      color: var(--card-text);
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.45);
+      box-shadow: 0 20px 50px rgba(4, 25, 84, 0.22);
+      overflow: hidden;
+    }
+
+    .card.popular {
+      transform: translateY(-12px);
+      box-shadow: 0 28px 70px rgba(4, 25, 84, 0.32);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      color: #2240a5;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      box-shadow: 0 10px 25px rgba(31,94,255,0.18);
+      z-index: 5;
+    }
+
+    .card-head {
+      padding: 82px 30px 38px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .card-head::after {
+      content: "";
+      position: absolute;
+      left: -10%;
+      right: -10%;
+      bottom: -145px;
+      height: 165px;
+      background: var(--card-bg);
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .core .card-head { background: linear-gradient(180deg, #8ed6ff 0%, #2d8cff 78%); }
+    .boost .card-head { background: linear-gradient(180deg, #ffd66d 0%, #ffba1f 78%); }
+    .signature .card-head { background: linear-gradient(180deg, #b9b1ff 0%, #7a66ff 78%); }
+
+    .plan, .price, .mini-note { position: relative; z-index: 4; }
+
+    .plan {
+      font-size: 44px;
+      font-weight: 800;
+      margin: 0 0 8px;
+      letter-spacing: -1px;
+    }
+
+    .mini-note {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 8px 12px;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.88);
+      color: #735300;
+      width: fit-content;
+    }
+
+    .price {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 4;
+    }
+
+    .amount {
+      font-size: 72px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -2px;
+      color: #ffffff;
+      text-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    }
+
+    .period {
+      font-size: 18px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.98);
+      text-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      margin-bottom: 8px;
+    }
+
+    .content { padding: 10px 0 18px; }
+
+    .intro { padding: 0 28px 22px; }
+
+    .intro h3 {
+      margin: 0 0 10px;
+      font-size: 26px;
+      line-height: 1.2;
+      letter-spacing: -0.6px;
+    }
+
+    .core .intro h3 { color: #1681db; }
+    .boost .intro h3 { color: #d89000; }
+    .signature .intro h3 { color: #6f5cf5; }
+
+    .intro p {
+      margin: 0;
+      color: #4d5b78;
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    .model-switch {
+      margin: 0 28px 20px;
+      background: #f3f6fc;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px;
+    }
+
+    .model-label {
+      font-size: 13px;
+      font-weight: 800;
+      color: #61708e;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      background: #fff;
+      color: #3b4a67;
+      border: 1px solid #dbe3f3;
+    }
+
+    .chip.active-core, .chip.active-boost, .chip.active-signature {
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .chip.active-core { background: #1681db; }
+    .chip.active-boost { background: #f0aa0d; }
+    .chip.active-signature { background: #6f5cf5; }
+
+    .section-title {
+      margin: 8px 0 0;
+      padding: 14px 28px;
+      background: #eef2fb;
+      color: #4e63da;
+      font-size: 17px;
+      font-weight: 400;
+    }
+
+    .features {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .features li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 28px;
+      min-height: 52px;
+      border-top: 1px solid #edf1f8;
+      font-size: 16px;
+    }
+
+    .features li:nth-child(even) { background: #fafbfd; }
+
+    .status { font-weight: 800; white-space: nowrap; }
+    .yes.core-color { color: #1681db; }
+    .yes.boost-color { color: #f0aa0d; }
+    .yes.signature-color { color: #6f5cf5; }
+    .no { color: #d4d9e6; }
+    .accent-core { color: #1681db; }
+    .accent-boost { color: #f0aa0d; }
+    .accent-signature { color: #6f5cf5; }
+    .accent-custom { color: #e64d83; }
+
+    .bottom-note {
+      max-width: 980px;
+      margin: 34px auto 0;
+      text-align: center;
+      color: rgba(255,255,255,0.75);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 1080px) {
+      .pricing-wrap { grid-template-columns: 1fr; }
+      .card.popular { transform: none; }
+      .hero p { font-size: 19px; }
+    }
+
+    @media (max-width: 640px) {
+      .topbar { padding: 16px 18px; }
+      .brand { font-size: 18px; }
+      .launch-pill { font-size: 12px; padding: 8px 12px; }
+      .hero { padding: 42px 14px 64px; }
+      .hero p { font-size: 17px; }
+      .plan { font-size: 38px; }
+      .amount { font-size: 58px; }
+      .intro h3 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand"><span class="brand-mark"></span><span>TABLE</span><span>PERKS</span></div>
+    <div class="launch-pill">LAUNCHING APRIL 1ST</div>
+  </div>
+
+  <section class="hero">
+    <div class="eyebrow">Flexible loyalty for restaurants, cafés and food brands</div>
+    <h1>Choose a plan that fits <span class="soft">your loyalty model</span></h1>
+    <p>Run your loyalty program your way with two reward systems to choose from: <strong>Stamp-based rewards</strong> or a <strong>Points-based program</strong>. Table Perks helps you drive repeat visits, reward regulars, and grow customer retention with your own branded experience.</p>
+
+    <div class="pricing-wrap">
+      <article class="card core">
+        <div class="card-head">
+          <div class="plan">Core</div>
+          <div class="price">
+            <div class="amount">$39</div>
+            <div class="period">/ Month</div>
+          </div>
+        </div>
+        <div class="content">
+          <div class="intro">
+            <h3>Simple loyalty, made easy</h3>
+            <p>Perfect for independent venues getting started with digital loyalty and customer rewards.</p>
+          </div>
+
+          <div class="model-switch">
+            <div class="model-label">Loyalty system</div>
+            <div class="chips">
+              <span class="chip active-core">Choose Stamp or Points</span>
+            </div>
+          </div>
+
+          <div class="section-title">Platform</div>
+          <ul class="features">
+            <li><span>Your own fully branded mobile app</span><span class="status yes core-color">✓</span></li>
+            <li><span>Merchant dashboard</span><span class="status yes core-color">✓</span></li>
+            <li><span>Multiple reward campaigns</span><span class="status yes core-color">✓</span></li>
+            <li><span>Single venue</span><span class="status yes core-color">✓</span></li>
+            <li><span>Unlimited customers</span><span class="status yes core-color">✓</span></li>
+          </ul>
+
+          <div class="section-title">Engagement tools</div>
+          <ul class="features">
+            <li><span>SMS campaigns</span><span class="status no">✕</span></li>
+            <li><span>Unlimited push notifications</span><span class="status no">✕</span></li>
+            <li><span>Birthday rewards</span><span class="status no">✕</span></li>
+            <li><span>Lapsed customer campaigns</span><span class="status no">✕</span></li>
+            <li><span>Integrations</span><span class="status no">✕</span></li>
+          </ul>
+
+          <div class="section-title">Business growth tools</div>
+          <ul class="features">
+            <li><span>Customer behaviour dashboard</span><span class="status accent-core">Essentials</span></li>
+            <li><span>Guest profile access</span><span class="status yes core-color">✓</span></li>
+            <li><span>Merchant care</span><span class="status accent-core">Standard</span></li>
+            <li><span>Launch support assets</span><span class="status accent-core">Starter Kit</span></li>
+            <li><span>Success partner</span><span class="status no">✕</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card boost popular">
+        <div class="popular-badge">MOST POPULAR</div>
+        <div class="card-head">
+          <div class="plan">Boost</div>
+          <div class="mini-note">Limited Time Offer</div>
+          <div class="price">
+            <div class="amount">$49</div>
+            <div class="period">/ Month</div>
+          </div>
+        </div>
+        <div class="content">
+          <div class="intro">
+            <h3>More engagement, more repeat visits</h3>
+            <p>Built for venues ready to unlock customer insights and stronger loyalty campaigns.</p>
+          </div>
+
+          <div class="model-switch">
+            <div class="model-label">Loyalty system</div>
+            <div class="chips">
+              <span class="chip active-boost">Choose Stamp or Points</span>
+              <span class="chip">Switch anytime</span>
+            </div>
+          </div>
+
+          <div class="section-title">Platform</div>
+          <ul class="features">
+            <li><span>Your own fully branded mobile app</span><span class="status yes boost-color">✓</span></li>
+            <li><span>Merchant dashboard</span><span class="status yes boost-color">✓</span></li>
+            <li><span>Multiple reward campaigns</span><span class="status yes boost-color">✓</span></li>
+            <li><span>Single venue</span><span class="status yes boost-color">✓</span></li>
+            <li><span>Unlimited customers</span><span class="status yes boost-color">✓</span></li>
+          </ul>
+
+          <div class="section-title">Engagement tools</div>
+          <ul class="features">
+            <li><span>SMS campaigns</span><span class="status no">✕</span></li>
+            <li><span>Unlimited push notifications</span><span class="status yes boost-color">✓</span></li>
+            <li><span>Birthday rewards</span><span class="status yes boost-color">✓</span></li>
+            <li><span>Lapsed customer campaigns</span><span class="status yes boost-color">✓</span></li>
+            <li><span>Integrations</span><span class="status yes boost-color">✓</span></li>
+          </ul>
+
+          <div class="section-title">Business growth tools</div>
+          <ul class="features">
+            <li><span>Customer behaviour dashboard</span><span class="status accent-boost">Advanced</span></li>
+            <li><span>Guest profile access</span><span class="status yes boost-color">✓</span></li>
+            <li><span>Merchant care</span><span class="status accent-boost">Priority</span></li>
+            <li><span>Campaign playbooks</span><span class="status accent-boost">Included</span></li>
+            <li><span>Success partner</span><span class="status no">✕</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card signature">
+        <div class="card-head">
+          <div class="plan">Signature</div>
+          <div class="price">
+            <div class="amount">$100</div>
+            <div class="period">/ Month</div>
+          </div>
+        </div>
+        <div class="content">
+          <div class="intro">
+            <h3>Premium support for ambitious brands</h3>
+            <p>Everything in Boost, plus tailored guidance and higher-touch support for growing operations.</p>
+          </div>
+
+          <div class="model-switch">
+            <div class="model-label">Loyalty system</div>
+            <div class="chips">
+              <span class="chip active-signature">Choose Stamp or Points</span>
+              <span class="chip">Best for scaling brands</span>
+            </div>
+          </div>
+
+          <div class="section-title">Platform</div>
+          <ul class="features">
+            <li><span>Your own fully branded mobile app</span><span class="status yes signature-color">✓</span></li>
+            <li><span>Merchant dashboard</span><span class="status yes signature-color">✓</span></li>
+            <li><span>Multiple reward campaigns</span><span class="status yes signature-color">✓</span></li>
+            <li><span>Single venue</span><span class="status yes signature-color">✓</span></li>
+            <li><span>Unlimited customers</span><span class="status yes signature-color">✓</span></li>
+          </ul>
+
+          <div class="section-title">Engagement tools</div>
+          <ul class="features">
+            <li><span>SMS campaigns</span><span class="status yes signature-color">✓</span></li>
+            <li><span>Unlimited push notifications</span><span class="status yes signature-color">✓</span></li>
+            <li><span>Birthday rewards</span><span class="status yes signature-color">✓</span></li>
+            <li><span>Lapsed customer campaigns</span><span class="status yes signature-color">✓</span></li>
+            <li><span>Integrations</span><span class="status yes signature-color">✓</span></li>
+          </ul>
+
+          <div class="section-title">Business growth tools</div>
+          <ul class="features">
+            <li><span>Customer behaviour dashboard</span><span class="status accent-signature">Complete</span></li>
+            <li><span>Guest profile access</span><span class="status yes signature-color">✓</span></li>
+            <li><span>Merchant care</span><span class="status accent-signature">VIP</span></li>
+            <li><span>Campaign playbooks</span><span class="status accent-custom">Tailored</span></li>
+            <li><span>Success partner</span><span class="status yes signature-color">✓</span></li>
+          </ul>
+        </div>
+      </article>
+    </div>
+
+    <div class="bottom-note">All plans let merchants choose the loyalty structure that fits their business best: a simple digital stamp system or a flexible points-based reward model.</div>
+  </section>
+</body>
+</html>
