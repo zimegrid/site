@@ -66,7 +66,7 @@
 
           <button
             class="mb-10 w-full rounded-[24px] py-5 text-base font-black tracking-wide transition-all duration-300 active:scale-95"
-            :class="plan.popular ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30 hover:bg-blue-700 hover:shadow-blue-700/40' : 'bg-gray-100 text-[#002d72] hover:bg-gray-200'"
+            :class="plan.popular ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30 hover:bg-blue-700 hover:shadow-blue-700/40' : 'bg-blue-50 text-blue-600 border border-blue-100 hover:bg-blue-100 hover:border-blue-200'"
           >
             Get Started Now
           </button>

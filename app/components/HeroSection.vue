@@ -16,7 +16,7 @@
           <div class="flex gap-[2px] mb-1">
              <span v-for="i in 5" :key="i">⭐</span>
           </div>
-          <p class="text-[#e8f6f2]">Join <strong class="font-semibold">100+ people</strong> who have already shown interest</p>
+          <p class="text-[#e8f6f2]"><strong class="font-semibold">100+ early adopters</strong> already joined</p>
         </div>
       </div>
 
