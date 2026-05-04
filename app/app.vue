@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, watch } from 'vue'
+const route = useRoute()
 
-onMounted(() => {
+const initObserver = () => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -13,25 +14,28 @@ onMounted(() => {
   document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
     observer.observe(el)
   })
+}
+
+onMounted(() => {
+  initObserver()
+})
+
+// Re-initialize observer on route change
+watch(() => route.path, () => {
+  setTimeout(() => {
+    initObserver()
+  }, 100)
 })
 </script>
 
 <template>
   <div class="app-layout">
     <AppNavbar />
-    <main>
-      <HeroSection />
-      <TrustedBy />
-      <FeaturesGrid />
-      <ProcessSteps />
-      <CTABanner />
-      <TargetAudience />
-      <IndustryVerticals />
-      <FAQSection />
-      <FinalCTA />
-    </main>
+    <NuxtPage />
     <AppFooter />
-    <ContactDialog  />
+    <ContactDialog />
+    <OnboardingDialog />
+    <CookieConsent />
   </div>
 </template>
 

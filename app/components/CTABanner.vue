@@ -1,110 +1,114 @@
 <template>
   <section
     id="pricing"
-    class="relative overflow-hidden bg-[#0057e2] py-6 md:py-12 text-white"
+    class="relative overflow-hidden bg-gradient-to-b from-[#f0f7ff] to-[#ffffff] py-16 md:py-24 text-[#111827]"
   >
-    <div class="pointer-events-none absolute inset-0 opacity-30">
-      <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[length:72px_72px]" />
-      <div class="absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(circle_at_top,rgba(143,216,255,0.28),transparent_60%)]" />
+    <!-- Dynamic Background Accents -->
+    <div class="pointer-events-none absolute inset-0 overflow-hidden">
+      <div class="absolute -left-20 -top-20 h-[500px] w-[500px] rounded-full bg-blue-200/30 blur-[120px]" />
+      <div class="absolute -right-20 top-1/2 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-indigo-200/20 blur-[120px]" />
     </div>
 
     <div class="container relative z-10 mx-auto px-4 md:px-16">
-      <div class="reveal mb-6 flex flex-col gap-3 text-left md:mb-8">
-        <div class="inline-flex w-fit rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.8px] text-white/90">
-          Pricing
+      <div class="reveal mb-16 flex flex-col items-center text-center">
+        <div class="mb-5 inline-flex rounded-full bg-blue-600/10 px-5 py-2 text-sm font-bold uppercase tracking-widest text-blue-700">
+          Pricing Plans
         </div>
-        <h2 class="max-w-[720px] text-[28px] font-semibold leading-[1.08] tracking-[-0.9px] md:text-[42px]">
-          Compare plans at a glance
+        <h2 class="mb-6 max-w-[800px] text-[42px] font-extrabold leading-tight tracking-tight text-[#002d72] md:text-[64px]">
+          Scalable plans for <span class="text-blue-600">every business</span>
         </h2>
-        <p class="max-w-[760px] text-[14px] leading-6 text-[#e8f6f2] md:text-[16px]">
-          Run your loyalty program your way with two reward systems to choose from:
-          <strong class="font-semibold text-white">Stamp-based rewards</strong> or a
-          <strong class="font-semibold text-white">Points-based program</strong>.
-          Table Perks helps you drive repeat visits, reward regulars, and grow customer
-          retention with your own branded experience.
+        <p class="max-w-[700px] text-xl leading-relaxed text-[#4b5563]">
+          Whether you're a single venue or a global brand, we have the tools to help you grow customer loyalty.
         </p>
       </div>
 
-      <div class="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 xl:mt-6 xl:grid-cols-3">
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         <article
           v-for="plan in plans"
           :key="plan.name"
-          class="relative flex h-full flex-col overflow-hidden rounded-[22px] border border-white/40 bg-white text-[#1f2a44] shadow-[0_20px_50px_rgba(4,25,84,0.22)] reveal"
-          :class="plan.popular ? 'md:col-span-2 xl:col-span-1 ring-1 ring-white/25 shadow-[0_28px_70px_rgba(4,25,84,0.32)]' : ''"
+          class="group relative flex flex-col rounded-[40px] border border-white bg-white p-10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_40px_80px_-20px_rgba(0,87,226,0.12)] reveal"
+          :class="plan.popular ? 'ring-4 ring-blue-600/10 scale-[1.02] z-20' : 'z-10'"
         >
           <div
             v-if="plan.popular"
-            class="absolute left-1/2 top-3 z-20 -translate-x-1/2 rounded-full bg-white px-4 py-1.5 text-[11px] font-extrabold tracking-[0.8px] text-[#2240a5] shadow-[0_10px_25px_rgba(31,94,255,0.18)]"
+            class="absolute -top-5 left-1/2 -translate-x-1/2 rounded-full bg-blue-600 px-6 py-2 text-xs font-black uppercase tracking-widest text-white shadow-xl shadow-blue-600/20"
           >
-            MOST POPULAR
+            Most Popular
           </div>
 
-          <div
-            class="relative flex min-h-[185px] flex-col justify-end overflow-hidden px-5 pb-5 pt-14 text-white md:px-6"
-            :class="plan.headerClass"
-          >
-            <div class="relative z-10">
-              <div class="mb-1 text-[32px] font-semibold tracking-[-1px] md:text-[36px]">
-                {{ plan.name }}
-              </div>
-              <div
-                v-if="plan.note"
-                class="mb-2 inline-flex rounded-xl bg-white/90 px-3 py-1.5 text-xs font-semibold text-[#735300]"
-              >
-                {{ plan.note }}
-              </div>
-              <div class="flex flex-wrap items-end gap-2">
-                <div class="text-[46px] font-bold leading-none tracking-[-2px] md:text-[56px]">
-                  {{ plan.price }}
-                </div>
-                <div class="mb-1.5 text-base font-semibold text-white/95">
-                  / Month
-                </div>
-              </div>
-            </div>
-            <div class="absolute inset-x-[-10%] bottom-[-106px] h-[126px] rounded-[100%] bg-white" />
-          </div>
-
-          <div class="flex flex-1 flex-col pb-3 pt-1">
-            <div class="px-5 pb-3 md:px-6">
-              <h3 class="text-[20px] font-semibold leading-[1.2] md:text-[22px]" :class="plan.titleClass">
-                {{ plan.tagline }}
-              </h3>
-              <p class="mt-2 text-[14px] leading-5 text-[#4d5b78] md:text-[15px]">
-                {{ plan.description }}
-              </p>
-            </div>
-
-            <div class="mx-5 rounded-[16px] border border-[#e7ebf5] bg-[#f3f6fc] p-2.5 md:mx-6">
-              <div class="mb-2 text-[11px] font-bold uppercase tracking-[0.8px] text-[#61708e]">
-                Loyalty system
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  v-for="chip in plan.chips"
-                  :key="chip.label"
-                  class="rounded-full border px-3 py-1.5 text-xs font-semibold md:text-sm"
-                  :class="chip.active ? plan.activeChipClass : 'border-[#dbe3f3] bg-white text-[#3b4a67]'"
+          <div class="mb-10 flex items-start justify-between">
+            <div class="flex-1">
+              <h3 class="text-3xl font-black tracking-tight text-[#002d72]">{{ plan.name }}</h3>
+              <p class="mt-3 text-[15px] font-medium leading-relaxed text-gray-500">{{ plan.description }}</p>
+              <!-- Plan Chips/Badges -->
+              <div v-if="plan.chips?.length" class="mt-4 flex flex-wrap gap-2">
+                <span 
+                  v-for="chip in plan.chips" 
+                  :key="chip"
+                  class="rounded-lg bg-blue-50 px-3 py-1 text-[11px] font-bold text-blue-600 border border-blue-100"
                 >
-                  {{ chip.label }}
+                  {{ chip }}
                 </span>
               </div>
             </div>
+          </div>
 
-            <div v-for="featureGroup in plan.featureGroups" :key="featureGroup.title" class="mt-3">
-              <div class="bg-[#eef2fb] px-5 py-2.5 text-[14px] font-semibold text-[#4e63da] md:px-6">
-                {{ featureGroup.title }}
+          <div class="mb-10 flex flex-col items-center justify-center rounded-3xl bg-gray-50/80 py-8">
+            <div class="flex items-baseline gap-1.5">
+              <span class="text-3xl font-bold text-blue-600">$</span>
+              <span class="text-7xl font-black tracking-tighter text-[#002d72]">{{ plan.price.replace('$', '') }}</span>
+              <span class="text-lg font-bold text-gray-400">/mo</span>
+            </div>
+            <div v-if="plan.note" class="mt-3 rounded-full bg-orange-100 px-4 py-1 text-[11px] font-black uppercase tracking-wider text-orange-600">
+              {{ plan.note }}
+            </div>
+          </div>
+
+          <button
+            class="mb-10 w-full rounded-[24px] py-5 text-base font-black tracking-wide transition-all duration-300 active:scale-95"
+            :class="plan.popular ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30 hover:bg-blue-700 hover:shadow-blue-700/40' : 'bg-blue-50 text-blue-600 border border-blue-100 hover:bg-blue-100 hover:border-blue-200'"
+          >
+            Get Started Now
+          </button>
+
+          <div class="space-y-8">
+            <div v-for="featureGroup in plan.featureGroups" :key="featureGroup.title">
+              <div class="mb-5 flex items-center gap-3">
+                <div class="h-1 w-6 rounded-full bg-blue-600/20"></div>
+                <div class="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400">
+                  {{ featureGroup.title }}
+                </div>
               </div>
-              <ul>
+              <ul class="space-y-4">
                 <li
                   v-for="feature in featureGroup.items"
                   :key="feature.label"
-                  class="flex min-h-[38px] items-center justify-between gap-3 border-t border-[#edf1f8] px-5 py-2 text-[13px] leading-5 even:bg-[#fafbfd] md:px-6 md:text-[14px]"
+                  class="flex items-center justify-between group/item"
                 >
-                  <span class="pr-3">{{ feature.label }}</span>
-                  <span class="shrink-0 text-right font-extrabold" :class="feature.tone">
-                    {{ feature.value }}
+                  <span class="text-[15px] font-semibold text-gray-700 transition-colors group-hover/item:text-[#002d72]">
+                    {{ feature.label }}
                   </span>
+                  <div class="flex items-center">
+                    <span 
+                      v-if="feature.value === '✓'"
+                      class="flex h-6 w-6 items-center justify-center rounded-full bg-green-100 text-green-600"
+                    >
+                      <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span 
+                      v-else-if="feature.value === '✕'"
+                      class="flex h-6 w-6 items-center justify-center rounded-full bg-gray-100 text-gray-300"
+                    >
+                      <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </span>
+                    <span v-else class="text-[13px] font-black text-blue-600">
+                      {{ feature.value }}
+                    </span>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -112,9 +116,8 @@
         </article>
       </div>
 
-      <p class="mx-auto mt-6 max-w-[980px] text-center text-sm leading-6 text-white/75 md:text-[15px]">
-        All plans let merchants choose the loyalty structure that fits their business
-        best: a simple digital stamp system or a flexible points-based reward model.
+      <p class="mt-20 text-center text-[15px] font-bold text-gray-400">
+        Transparent pricing. No hidden fees. <span class="text-blue-600">Choose your loyalty model anytime.</span>
       </p>
     </div>
   </section>
@@ -127,43 +130,46 @@ const plans = [
     price: '$59',
     note: '',
     tagline: 'Simple loyalty, made easy',
-    description: 'Perfect for independent venues getting started with digital loyalty and customer rewards.',
+    description: 'Perfect for independent venues getting started with digital loyalty.',
     popular: false,
-    headerClass: 'bg-[linear-gradient(180deg,#8ed6ff_0%,#2d8cff_78%)]',
-    titleClass: 'text-[#1681db]',
-    activeChipClass: 'border-transparent bg-[#1681db] text-white',
-    chips: [
-      { label: 'Choose Stamp or Points', active: true }
-    ],
+    chips: ['Stamp or Points'],
     featureGroups: [
       {
         title: 'Platform',
         items: [
-          { label: 'Branded customer mobile app', value: '✓', tone: 'text-[#1681db]' },
-          { label: 'Merchant dashboard', value: '✓', tone: 'text-[#1681db]' },
-          { label: 'Stamp system', value: '✓', tone: 'text-[#1681db]' },
-          { label: 'Points system (slabs + rewards)', value: '✓', tone: 'text-[#1681db]' },
-          { label: 'Membership tiers', value: '✓', tone: 'text-[#1681db]' }
+          { label: 'Branded mobile app', value: '✓' },
+          { label: 'Merchant dashboard', value: '✓' },
+          { label: 'Smart Loyalty Tablet', value: 'Discounted' },
+          { label: 'Stamp system', value: '✓' },
+          { label: 'Points system', value: '✓' },
+          { label: 'Membership tiers', value: '✓' }
         ]
       },
       {
         title: 'Engagement tools',
         items: [
-          { label: 'QR/customer-code issuing + redemption', value: '✓', tone: 'text-[#1681db]' },
-          { label: 'Customer management + histories', value: '✓', tone: 'text-[#1681db]' },
-          { label: 'Menu + categories', value: '✓', tone: 'text-[#1681db]' },
-          { label: 'Banners', value: '✓', tone: 'text-[#1681db]' }
+          { label: 'QR Code Issuing', value: '✓' },
+          { label: 'Push Notifications', value: '✓' },
+          { label: 'Customer management', value: '✓' },
+          { label: 'Menu and Ordering', value: '✓' },
+          { label: 'Banner Advertising', value: '✓' }
         ]
       },
       {
-        title: 'Business growth tools',
+        title: 'Business growth',
         items: [
-          { label: 'Email templates', value: '✕', tone: 'text-[#d4d9e6]' },
-          { label: 'Email campaigns', value: '✕', tone: 'text-[#d4d9e6]' },
-          { label: 'Branch management', value: '✕', tone: 'text-[#d4d9e6]' },
-          { label: 'Staff management', value: '✕', tone: 'text-[#d4d9e6]' },
-          { label: 'Roles/permissions', value: '✕', tone: 'text-[#d4d9e6]' },
-          { label: 'Merchant care', value: 'Standard', tone: 'text-[#1681db]' }
+          { label: 'Email templates', value: 'Add-on' },
+          { label: 'Email campaigns', value: 'Add-on' },
+          { label: 'Branch management', value: '✕' },
+          { label: 'Staff management', value: '✕' }
+        ]
+      },
+      {
+        title: 'Support',
+        items: [
+          { label: 'Email Support', value: '✓' },
+          { label: 'Web Chat Support', value: '✓' },
+          { label: 'Phone Support', value: '✕' }
         ]
       }
     ]
@@ -173,45 +179,47 @@ const plans = [
     price: '$89',
     note: 'Limited Time Offer',
     tagline: 'More engagement, more repeat visits',
-    description: 'Built for venues ready to unlock customer insights and stronger loyalty campaigns.',
+    description: 'Built for venues ready to unlock customer insights and stronger campaigns.',
     popular: true,
-    headerClass: 'bg-[linear-gradient(180deg,#ffd66d_0%,#ffba1f_78%)]',
-    titleClass: 'text-[#d89000]',
-    activeChipClass: 'border-transparent bg-[#f0aa0d] text-white',
-    chips: [
-      { label: 'Choose Stamp or Points', active: true },
-      { label: 'Switch anytime', active: false }
-    ],
+    chips: ['Stamp or Points', 'Advanced Insights'],
     featureGroups: [
       {
         title: 'Platform',
         items: [
-          { label: 'Branded customer mobile app', value: '✓', tone: 'text-[#f0aa0d]' },
-          { label: 'Merchant dashboard', value: '✓', tone: 'text-[#f0aa0d]' },
-          { label: 'Stamp system', value: '✓', tone: 'text-[#f0aa0d]' },
-          { label: 'Points system (slabs + rewards)', value: '✓', tone: 'text-[#f0aa0d]' },
-          { label: 'Membership tiers', value: '✓', tone: 'text-[#f0aa0d]' }
+          { label: 'Branded mobile app', value: '✓' },
+          { label: 'Merchant dashboard', value: '✓' },
+          { label: 'Smart Loyalty Tablet', value: 'Free' },
+          { label: 'Stamp system', value: '✓' },
+          { label: 'Points system', value: '✓' },
+          { label: 'Membership tiers', value: '✓' }
         ]
       },
       {
         title: 'Engagement tools',
         items: [
-          { label: 'QR/customer-code issuing + redemption', value: '✓', tone: 'text-[#f0aa0d]' },
-          { label: 'Customer management + histories', value: '✓', tone: 'text-[#f0aa0d]' },
-          { label: 'Menu + categories', value: '✓', tone: 'text-[#f0aa0d]' },
-          { label: 'Banners', value: '✓', tone: 'text-[#f0aa0d]' }
+          { label: 'QR Code Issuing', value: '✓' },
+          { label: 'Push Notifications', value: '✓' },
+          { label: 'Customer management', value: '✓' },
+          { label: 'Menu and Ordering', value: '✓' },
+          { label: 'Banner Advertising', value: '✓' }
         ]
       },
       {
-        title: 'Business growth tools',
+        title: 'Business growth',
         items: [
-          { label: 'Email templates', value: '✕', tone: 'text-[#d4d9e6]' },
-          { label: 'Email campaigns', value: '✕', tone: 'text-[#d4d9e6]' },
-          { label: 'Branch management', value: '✓', tone: 'text-[#f0aa0d]' },
-          { label: 'Staff management', value: '✓', tone: 'text-[#f0aa0d]' },
-          { label: 'Roles/permissions', value: '✓', tone: 'text-[#f0aa0d]' },
-          { label: 'Merchant care', value: 'Priority', tone: 'text-[#f0aa0d]' },
-          { label: 'Campaign playbooks', value: 'Included', tone: 'text-[#f0aa0d]' }
+          { label: 'Email templates', value: 'Add-on' },
+          { label: 'Email campaigns', value: 'Add-on' },
+          { label: 'Branch management', value: '✓' },
+          { label: 'Staff management', value: '✓' },
+          { label: 'Campaign playbooks', value: '✓' }
+        ]
+      },
+      {
+        title: 'Support',
+        items: [
+          { label: 'Email Support', value: '✓' },
+          { label: 'Web Chat Support', value: '✓' },
+          { label: 'Phone Support', value: '✕' }
         ]
       }
     ]
@@ -221,47 +229,48 @@ const plans = [
     price: '$179',
     note: '',
     tagline: 'Premium support for ambitious brands',
-    description: 'Everything in Boost, plus tailored guidance and higher-touch support for growing operations.',
+    description: 'Everything in Boost, plus tailored guidance and higher-touch support.',
     popular: false,
-    headerClass: 'bg-[linear-gradient(180deg,#b9b1ff_0%,#7a66ff_78%)]',
-    titleClass: 'text-[#6f5cf5]',
-    activeChipClass: 'border-transparent bg-[#6f5cf5] text-white',
-    chips: [
-      { label: 'Choose Stamp or Points', active: true },
-      { label: 'Best for scaling brands', active: false }
-    ],
+    chips: ['Stamp or Points', 'Best for scaling', 'Switch anytime'],
     featureGroups: [
       {
         title: 'Platform',
         items: [
-          { label: 'Branded customer mobile app', value: '✓', tone: 'text-[#6f5cf5]' },
-          { label: 'Merchant dashboard', value: '✓', tone: 'text-[#6f5cf5]' },
-          { label: 'Stamp system', value: '✓', tone: 'text-[#6f5cf5]' },
-          { label: 'Points system (slabs + rewards)', value: '✓', tone: 'text-[#6f5cf5]' },
-          { label: 'Membership tiers', value: '✓', tone: 'text-[#6f5cf5]' }
+          { label: 'Branded mobile app', value: '✓' },
+          { label: 'Merchant dashboard', value: '✓' },
+          { label: 'Smart Loyalty Tablet', value: 'Free' },
+          { label: 'Stamp system', value: '✓' },
+          { label: 'Points system', value: '✓' },
+          { label: 'Membership tiers', value: '✓' }
         ]
       },
       {
         title: 'Engagement tools',
         items: [
-          { label: 'QR/customer-code issuing + redemption', value: '✓', tone: 'text-[#6f5cf5]' },
-          { label: 'Customer management + histories', value: '✓', tone: 'text-[#6f5cf5]' },
-          { label: 'Menu + categories', value: '✓', tone: 'text-[#6f5cf5]' },
-          { label: 'Banners', value: '✓', tone: 'text-[#6f5cf5]' }
+          { label: 'QR Code Issuing', value: '✓' },
+          { label: 'Push Notifications', value: '✓' },
+          { label: 'Customer management', value: '✓' },
+          { label: 'Menu and Ordering', value: '✓' },
+          { label: 'Banner Advertising', value: '✓' }
         ]
       },
       {
-        title: 'Business growth tools',
+        title: 'Business growth',
         items: [
-          { label: 'Email templates', value: '✓', tone: 'text-[#6f5cf5]' },
-          { label: 'Email campaigns', value: '✓', tone: 'text-[#6f5cf5]' },
-          { label: 'Mailchimp integration', value: '✓', tone: 'text-[#6f5cf5]' },
-          { label: 'Branch management', value: '✓', tone: 'text-[#6f5cf5]' },
-          { label: 'Staff management', value: '✓', tone: 'text-[#6f5cf5]' },
-          { label: 'Roles/permissions', value: '✓', tone: 'text-[#6f5cf5]' },
-          { label: 'Merchant care', value: 'VIP', tone: 'text-[#6f5cf5]' },
-          { label: 'Campaign playbooks', value: 'Tailored', tone: 'text-[#e64d83]' },
-          { label: 'Success partner', value: 'Included', tone: 'text-[#6f5cf5]' }
+          { label: 'Email templates', value: '✓' },
+          { label: 'Email campaigns', value: '✓' },
+          { label: 'Dedicated onboarding', value: '✓' },
+          { label: 'Branch management', value: '✓' },
+          { label: 'Staff management', value: '✓' },
+          { label: 'Success partner', value: '✓' }
+        ]
+      },
+      {
+        title: 'Support',
+        items: [
+          { label: 'Email Support', value: '✓' },
+          { label: 'Web Chat Support', value: '✓' },
+          { label: 'Phone Support', value: '✓' }
         ]
       }
     ]
