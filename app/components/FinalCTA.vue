@@ -10,13 +10,22 @@
             See how the platform fits your branches, menu, and customers
           </p>
           <a
-            href="#pricing"
+            href="#"
             class="inline-flex items-center justify-center bg-white text-[#0c130f] border border-black/10 hover:bg-gray-50 px-8 py-4 rounded-full font-semibold transition-all"
+            @click.prevent="openOnboarding"
           >
-            See Pricing
+            Get Started
           </a>
         </div>
       </div>
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+const isOnboardingOpen = useState<boolean>('onboardingOpen', () => false)
+
+const openOnboarding = () => {
+  isOnboardingOpen.value = true
+}
+</script>

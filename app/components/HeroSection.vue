@@ -16,7 +16,7 @@
           <div class="flex gap-[2px] mb-1">
              <span v-for="i in 5" :key="i">⭐</span>
           </div>
-          <p class="text-[#e8f6f2]">Over <strong class="font-semibold">100+ people</strong> joined</p>
+          <p class="text-[#e8f6f2]">Join <strong class="font-semibold">100+ people</strong> who have already shown interest</p>
         </div>
       </div>
 
@@ -31,10 +31,10 @@
 
       <div class="flex flex-col md:flex-row w-full md:w-auto gap-4 md:gap-6 mb-12 md:mb-20 justify-center">
         <a href="#pricing" class="bg-white text-[#0c130f] hover:bg-gray-50 px-8 py-4 text-sm rounded-full font-semibold transition-all w-full md:w-auto inline-block">See Pricing</a>
-        <a href="#" class="border border-white text-white hover:bg-white/10 px-8 py-4 text-sm rounded-full font-semibold transition-all w-full md:w-auto inline-block" @click.prevent="openContact">Contact Us</a>
+        <a href="#" class="border border-white text-white hover:bg-white/10 px-8 py-4 text-sm rounded-full font-semibold transition-all w-full md:w-auto inline-block" @click.prevent="openOnboarding">Get Started</a>
       </div>
 
-      <div class="relative w-[90%] max-w-[800px] mt-5 m x-auto">
+      <div class="relative w-[90%] max-w-[800px] mt-5 mx-auto">
         <div class="banner-container">
           <img src="/images/mainbanner.png" alt="Dashboard" class="banner-image" />
         </div>
@@ -47,10 +47,10 @@
 </template>
 
 <script setup lang="ts">
-const isContactOpen = useState<boolean>('contactOpen', () => false)
+const isOnboardingOpen = useState<boolean>('onboardingOpen', () => false)
 
-const openContact = () => {
-  isContactOpen.value = true
+const openOnboarding = () => {
+  isOnboardingOpen.value = true
 }
 </script>
 
